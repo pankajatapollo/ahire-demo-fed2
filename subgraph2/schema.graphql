@@ -1,0 +1,61 @@
+
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@shareable"])
+
+"Item that was sold"
+type Item @key(fields: "UPC") {
+  "Item Number"
+  ItemNbr:  ID
+  "Item Description"
+  ItemDesc1: String
+  "Prime Item Number"
+  PrimeItemNbr: String
+  "Prime Item Description"
+  PrimeItemDesc: String
+  "The UPC number (Cannot be empty)"
+  UPC: ID!
+  "The UPC Bar code description"
+  UPCDesc: String
+  "Vendor Number"
+  VendorNbr: ID
+  "Vendor Name"
+  VendorName: String
+  "Vendor Number Dept"
+  VendorNbrDept: Int
+  "Unit Retail Price"
+  UnitRetail: Float
+  "Unit Cost Price"
+  UnitCost: Float
+  "Status of the Item"
+  ItemStatus: String
+  "Type of the Item"
+  ItemType: Int
+  "Order department number"
+  OrderDeptNbr: Int
+  "Brand Description"
+  BrandDesc: String
+  "Brand ID"
+  BrandID: String
+  "Height of the Item"
+  ItemHeight: Float
+  "Length of the Item"
+  ItemLength: Float
+  "Width of the Item"
+  ItemWidth: Float
+}
+
+"Sale entity in Item Subgraph"
+type Sale @key(fields: "UPC StoreNbr Daily") {
+    UPC: ID!
+    StoreNbr: ID!
+    Daily: String!
+    "The Product object -- contributed by the Item subgraph"
+    Product: Item!
+}
+
+
+type Query {
+    "Get a list of Products"
+    products(upc: ID): [Item!]!
+}

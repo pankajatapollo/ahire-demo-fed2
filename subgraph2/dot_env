@@ -1,0 +1,4 @@
+APOLLO_KEY=service:Point-of-Sale-Fed2:dWI_BsJc7gjAfs5N1Jm6rA
+APOLLO_GRAPH_REF=Point-of-Sale-Fed2@current
+SUBGRAPH_NAME=Products
+ROUTING_URL=http://localhost:8086/

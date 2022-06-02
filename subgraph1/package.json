@@ -1,0 +1,21 @@
+{
+    "name": "subgraph",
+    "version": "1.0.0-FED2",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "Pankaj L. Ahire <pankaj@apollographql.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@apollo/subgraph": "*",
+        "apollo-datasource-rest": "*",
+        "apollo-server": "*",
+        "dotenv": "*",
+        "graphql": "*",
+        "jsonwebtoken": "^8.5.1"
+    }
+}

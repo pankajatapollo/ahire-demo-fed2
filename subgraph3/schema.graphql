@@ -1,0 +1,64 @@
+
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@shareable", "@tag"])
+
+"The Store that sold the item at the POS"
+type Shop @key(fields: "StoreNbr") {
+ "Store Number"
+ StoreNbr: ID!
+ "Name of the store"
+ StoreName: String
+ "Type of the Store description"
+ StoreTypeDescr: String
+ "Standard Timezone"
+ TimeZoneStandard: String @deprecated(reason: "Timezones will no longer be explicitly supplied")
+ "Daylight Savings Timezone"
+ TimeZoneDaylightsavings: String @deprecated(reason: "Timezones or Daylight savings will no longer be explicitly supplied")
+ "Street Address"
+ StreetAddress: String
+ "Which building?"
+ BuildingAddress: String
+ "City"
+ City: String
+ "State (for United States)"
+ State: String
+ "Zipcode (Specific to United States)"
+ ZipCode: String
+ "Financial Ledger Reporting Code"
+ FinancialRptCode: String @tag(name: "pii")
+ "Phone number"
+ PhoneNbr: String
+ "Class of the Sales"
+ SalesClass: Int
+ "How many sqft is this store?"
+ SquareFootage: Int
+ "Size class"
+ SizeClass: Int
+ "First name of the manager"
+ ManagerFirstName: String @tag(name: "pii")
+ "Last name of the manager"
+ ManagerLastName: String @tag(name: "pii")
+ "Subdivision"
+ Subdiv: String
+ "Region number"
+ Region: Int
+ "District number"
+ District: Int
+ "Date on which this store opened"
+ OpenDate: String
+}
+
+"Sale entity in Shop Subgraph"
+type Sale @key(fields: "UPC StoreNbr Daily") {
+    UPC: ID!
+    StoreNbr: ID!
+    Daily: String!
+    "The Store object -- contributed by the Shop subgraph"
+    Store: Shop!
+}
+type Query {
+    "Get a list of all the stores"
+    stores(storenbr: ID): [Shop!]!
+
+}

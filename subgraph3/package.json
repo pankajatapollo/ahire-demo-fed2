@@ -1,0 +1,20 @@
+{
+    "name": "Monolith-Store-POS-GraphQL",
+    "version": "1.0.0-",
+    "description": "This is the monolith GraphQL version of the POS Sales data from a Store.",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "Pankaj L. Ahire <pankaj@apollographql.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@apollo/subgraph": "^2.0.2",
+        "apollo-datasource-rest": "*",
+        "apollo-server": "*",
+        "dotenv": "*",
+        "graphql": "*"
+    }
+}

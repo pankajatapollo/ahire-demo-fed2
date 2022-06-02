@@ -1,0 +1,45 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@shareable"])
+
+"Sales information from Point of Sales system (Fed 2 subgraph)"
+type Sale @key(fields: "UPC StoreNbr Daily") {
+    "UPC Number of the item sold -- description"
+    UPC: ID!
+    "UPC Description of the item"
+    UPCDesc: String
+    "Vendor number of the item"
+    VendorNbr: ID
+    "Store number of where this item was sold"
+    StoreNbr: ID!
+    "The total sale amount for this item"
+    POSSales: Float
+    "The quantity of the item sold"
+    POSQty: Float
+    "The number of stores where this item was sold"
+    POSStoreCount: Int
+    "The date when this item was sold"
+    Daily: String!
+}
+
+type Query {
+    "Get a list of Sales"
+    sales(upc: ID, store: ID, daily: String): [Sale!]!
+}
+
+type Mutation {
+ "Mutation to log into our Point of Sales service"
+ login(email: String!, password: String!): String
+}
+
+type Item @key(fields: "UPC") {
+    UPC: ID!
+    "Sales for this Item -- Contributed by the Sales subgraph"
+    Sales: [Sale]
+}
+
+type Shop @key(fields: "StoreNbr") {
+    StoreNbr: ID!
+    "Sales for this Store -- Contributed by the Sales subgraph"
+    Sales: [Sale]
+}
