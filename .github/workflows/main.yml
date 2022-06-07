@@ -1,6 +1,6 @@
 # Author: Pankaj L. Ahire (pankaj@apollographql.com)
 # Based on the basic GitHub Actions flow with basic flow from Rover CI/CD Public documentation
-# Customized for the Federated 2 GraphQL Schema for Point of Sales for a store
+# Customized for the Federated 2 GraphQL Schema for Point of Sales for a store 
 
 name: Check GraphQL Schema
 
