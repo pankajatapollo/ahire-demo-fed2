@@ -1,0 +1,27 @@
+version: '3'
+services:
+  collector:
+    container_name: collector
+    image: otel/opentelemetry-collector-contrib:0.52.0
+    command: ["--config=/conf/collector-config.yml"]
+    volumes:
+      - ./opentelemetry/collector-config.yml:/conf/collector-config.yml
+    ports:
+      - "9464:9464"
+      - "4317:4317"
+      - "4318:4318"
+      - "55679:55679"
+    depends_on:
+      - zipkin
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin:2.23.16
+    ports:
+      - "9411:9411"
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.36.0
+    volumes:
+      - ./opentelemetry/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"

@@ -1,3 +1,4 @@
+require("./open-telemetry.js");
 const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginUsageReporting } = require('apollo-server-core');
 const { ApolloServerPluginInlineTrace } = require('apollo-server-core');

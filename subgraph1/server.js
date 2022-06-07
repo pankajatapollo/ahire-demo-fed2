@@ -1,12 +1,16 @@
+require("./open-telemetry.js");
 const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
 const { ApolloServer, gql } = require('apollo-server');
 const { buildSubgraphSchema } = require('@apollo/subgraph');
+const log4js = require('log4js');
+const log4jslogger = log4js.getLogger("SALE");
+log4jslogger.level = "debug";
 
-
-const SaleAPI = require('./datasources/sale')
-const resolvers = require('./resolvers')
+const SaleAPI = require('./datasources/sale');
+const resolvers = require('./resolvers');
+const myplugin = require('./customplugin');
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -20,8 +24,12 @@ const server = new ApolloServer({
   dataSources: () => ({
     saleAPI: new SaleAPI()
   }),
+  logger: log4jslogger,
+  plugins: [ myplugin ],
   context: ({ req }) => ({
-    defaultlimit: req.headers.defaultlimit || 20
+    defaultlimit: req.headers.defaultlimit || 20,
+    req: req,
+    logger: log4jslogger
   })
 });
 

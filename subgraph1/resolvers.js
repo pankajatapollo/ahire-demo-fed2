@@ -2,14 +2,18 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     Query: {
-      sales: (function(_, { upc, store, daily }, { dataSources }) { 
+      sales: (function(_, { upc, store, daily }, { logger, dataSources }) { 
           if (upc === undefined && store === undefined && daily === undefined) {
-              return dataSources.saleAPI.getAllSales();
+            logger.log("Called without UPC, StoreNbr, or Daily date. Will just return some Sales");
+            return dataSources.saleAPI.getAllSales();
           } else if(upc !== undefined) {
+            logger.log(`Getting Sales with given UPC -- ${upc}`);
             return dataSources.saleAPI.getSalesByUPC({ upc: upc });
           } else if(store !== undefined) {
+            logger.log(`Getting Sales with given StoreNbr -- ${store}`);
             return dataSources.saleAPI.getSalesByStoreNbr({ storenbr: store });
           } else {
+            logger.log(`Getting Sales with given Date -- ${daily}`);
             return dataSources.saleAPI.getSalesByDaily({ daily: daily });
           }
       })
