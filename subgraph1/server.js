@@ -10,7 +10,7 @@ log4jslogger.level = "debug";
 
 const SaleAPI = require('./datasources/sale');
 const resolvers = require('./resolvers');
-//const myplugin = require('./customplugin');
+const myplugin = require('./customplugin');
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -25,7 +25,7 @@ const server = new ApolloServer({
     saleAPI: new SaleAPI()
   }),
   logger: log4jslogger,
-//  plugins: [ myplugin ],
+  plugins: [ myplugin ],
   context: ({ req }) => ({
     defaultlimit: req.headers.defaultlimit || 20,
     req: req,
