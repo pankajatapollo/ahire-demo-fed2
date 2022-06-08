@@ -13,8 +13,7 @@ type Item @key(fields: "UPC") {
   PrimeItemNbr: String
   "Prime Item Description"
   PrimeItemDesc: String
-  "This is a demo for RaboBank and this is the UPC field"
-  UPC: ID!
+ 
   "The UPC Bar code description"
   UPCDesc: String
   "Vendor Number"
