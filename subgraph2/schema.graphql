@@ -11,7 +11,7 @@ type Item @key(fields: "UPC") {
   ItemDesc1: String
   "Prime Item Number"
   PrimeItemNbr: String
-  "Prime Item Description"
+  "Prime Item Description -- not Amazon Prime"
   PrimeItemDesc: String
   "UPC Code -- readded"
   UPC: ID!
