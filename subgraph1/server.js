@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { ApolloServer, gql } = require('apollo-server');
 const { buildSubgraphSchema } = require('@apollo/subgraph');
+
 const log4js = require('log4js');
 const log4jslogger = log4js.getLogger("SALE");
 log4jslogger.level = "debug";

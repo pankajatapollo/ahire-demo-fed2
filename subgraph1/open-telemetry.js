@@ -29,10 +29,10 @@ const provider = new NodeTracerProvider({
 });
 
 // Configure a test exporter to print all traces to the console
-const consoleExporter = new ConsoleSpanExporter();
-provider.addSpanProcessor(
-  new SimpleSpanProcessor(consoleExporter)
-);
+//const consoleExporter = new ConsoleSpanExporter();
+//provider.addSpanProcessor(
+//  new SimpleSpanProcessor(consoleExporter)
+//);
 
 // Configure an exporter that pushes all traces to Zipkin
 // (This assumes Zipkin is running on localhost at the
