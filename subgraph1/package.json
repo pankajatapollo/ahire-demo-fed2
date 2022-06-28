@@ -1,5 +1,5 @@
 {
-    "name": "subgraph",
+    "name": "subgraph-sales",
     "version": "1.0.0-FED2",
     "description": "",
     "main": "server.js",
@@ -12,21 +12,21 @@
     "license": "MIT",
     "dependencies": {
         "@apollo/subgraph": "*",
-        "@opentelemetry/api": "1.0",
-        "@opentelemetry/core": "1.0",
-        "@opentelemetry/exporter-zipkin": "1.0",
-        "@opentelemetry/instrumentation": "^0.27.0",
-        "@opentelemetry/instrumentation-express": "^0.28.0",
-        "@opentelemetry/instrumentation-graphql": "^0.27.4",
-        "@opentelemetry/instrumentation-http": "^0.27.0",
-        "@opentelemetry/resources": "1.0",
-        "@opentelemetry/sdk-trace-base": "1.0",
-        "@opentelemetry/sdk-trace-node": "1.0",
+        "@opentelemetry/api": "*",
+        "@opentelemetry/core": "*",
+        "@opentelemetry/exporter-zipkin": "*",
+        "@opentelemetry/instrumentation": "*",
+        "@opentelemetry/instrumentation-express": "*",
+        "@opentelemetry/instrumentation-graphql": "*",
+        "@opentelemetry/instrumentation-http": "*",
+        "@opentelemetry/resources": "*",
+        "@opentelemetry/sdk-trace-base": "*",
+        "@opentelemetry/sdk-trace-node": "*",
         "apollo-datasource-rest": "*",
         "apollo-server": "*",
         "dotenv": "*",
         "graphql": "*",
         "jsonwebtoken": "^8.5.1",
-        "log4js": "^6.5.2"
+        "log4js": "*"
     }
 }
