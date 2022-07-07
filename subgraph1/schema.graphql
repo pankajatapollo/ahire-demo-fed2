@@ -4,7 +4,7 @@ extend schema
 
 "Sales information from Point of Sales system (Fed 2 subgraph)"
 type Sale @key(fields: "UPC StoreNbr Daily") {
-    "UPC Number of the item sold"
+    "UPC Number of the item sold in a store"
     UPC: ID!
     "UPC Description of the item"
     UPCDesc: String
