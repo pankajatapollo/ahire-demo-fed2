@@ -17,6 +17,10 @@ exporters:
     endpoint: "http://zipkin:9411/api/v2/spans"
   prometheus:
     endpoint: "0.0.0.0:9464"
+  otlp:
+    endpoint: https://otlp.nr-data.net:4317
+    headers:
+      "api-key": b3968879d17906bb2b985d70232c6449FFFFNRAL
 
 processors:
   batch:
@@ -35,6 +39,7 @@ service:
       exporters: [zipkin]
       processors: [spanmetrics, batch]
     metrics:
-      receivers: [otlp/spanmetrics]
+      receivers: [otlp/spanmetrics, otlp]
       exporters: [prometheus]
       processors: [batch]
+      exporters: [otlp]
