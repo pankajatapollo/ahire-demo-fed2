@@ -9,7 +9,7 @@ type Sale @key(fields: "UPC StoreNbr Daily") {
     "UPC Description of the item"
     UPCDesc: String
     "Vendor number of the item"
-    VendorNbr: ID @deprecated(reason:"Just for demo")
+    VendorNbr: ID
     "Store number of where this item was sold"
     StoreNbr: ID!
     "The total sale amount for this item"
