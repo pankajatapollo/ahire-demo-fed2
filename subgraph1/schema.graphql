@@ -6,7 +6,7 @@ extend schema
 type Sale @key(fields: "UPC StoreNbr Daily") {
     "UPC Number of the item sold in a store"
     UPC: ID!
-    "UPC Description of the item"
+    "UPC Description of the item changed on Aug 9 2022"
     UPCDesc: String
     "Vendor number of the item"
     VendorNbr: ID
