@@ -59,6 +59,6 @@ type Sale @key(fields: "UPC StoreNbr Daily") {
 }
 type Query {
     "Get a list of all the stores"
-    stores(storenbr: ID): [Shop!]!
+    stores(storenbr: ID): [Shop!]! @tag(name: "pii")
 
 }
