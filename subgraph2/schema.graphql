@@ -5,7 +5,7 @@ extend schema
 
 "Item or Product"
 type Item @key(fields: "UPC") {
-  "Item Number"
+  "Item Number -- for Qlik team"
   ItemNbr:  ID
   "Item Description"
   ItemDesc1: String
