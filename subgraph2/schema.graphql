@@ -56,6 +56,6 @@ type Sale @key(fields: "UPC StoreNbr Daily") {
 
 
 type Query {
-    "Get a list of Products"
+    "Get a list of Products from the store"
     products(upc: ID): [Item!]!
 }
