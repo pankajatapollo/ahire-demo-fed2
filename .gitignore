@@ -3,3 +3,4 @@ apostrequest
 .env
 node_modules
 router/router
+router*
