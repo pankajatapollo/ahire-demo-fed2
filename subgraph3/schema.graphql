@@ -26,9 +26,9 @@ type Shop @key(fields: "StoreNbr") {
  "Zipcode (Specific to United States)"
  ZipCode: String
  "Financial Ledger Reporting Code"
- FinancialRptCode: String @tag(name: "pii")
+ FinancialRptCode: String @tag(name: "pii") @tag(name:"internal")
  "Phone number"
- PhoneNbr: String
+ PhoneNbr: String @tag(name: "pii") @tag(name:"personal")
  "Class of the Sales"
  SalesClass: Int
  "How many sqft is this store?"
@@ -36,11 +36,11 @@ type Shop @key(fields: "StoreNbr") {
  "Size class"
  SizeClass: Int
  "First name of the manager"
- ManagerFirstName: String @tag(name: "pii")
+ ManagerFirstName: String @tag(name: "pii") @tag(name:"personal")
  "Last name of the manager"
- ManagerLastName: String @tag(name: "pii")
+ ManagerLastName: String @tag(name: "pii") @tag(name:"personal")
  "Subdivision"
- Subdiv: String
+ Subdiv: String 
  "Region number"
  Region: Int
  "District number"

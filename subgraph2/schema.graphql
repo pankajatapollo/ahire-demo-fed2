@@ -1,7 +1,7 @@
 
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0",
-        import: ["@key", "@shareable"])
+        import: ["@key", "@shareable", "@tag"])
 
 "Item or Product"
 type Item @key(fields: "UPC") {
@@ -22,7 +22,7 @@ type Item @key(fields: "UPC") {
   "Vendor Name"
   VendorName: String
   "Vendor Number Dept"
-  VendorNbrDept: Int
+  VendorNbrDept: Int @tag(name:"internal")
   "Unit Retail Price"
   UnitRetail: Float
   "Unit Cost Price"
@@ -30,13 +30,13 @@ type Item @key(fields: "UPC") {
   "Status of the Item"
   ItemStatus: String
   "Type of the Item"
-  ItemType: Int
+  ItemType: Int @tag(name:"internal")
   "Order department number"
-  OrderDeptNbr: Int
+  OrderDeptNbr: Int @tag(name:"internal")
   "Brand Description"
   BrandDesc: String
   "Brand ID"
-  BrandID: String
+  BrandID: String 
   "Height of the Item"
   ItemHeight: Float
   "Length of the Item"
