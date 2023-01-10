@@ -7,7 +7,7 @@ extend schema
 type Item @key(fields: "UPC") {
   "Item Number with proper description for team"
   ItemNbr:  ID
-  "Item Description"
+  "Item Description for Vancouver"
   ItemDesc1: String
   "Prime Item Number"
   PrimeItemNbr: String
