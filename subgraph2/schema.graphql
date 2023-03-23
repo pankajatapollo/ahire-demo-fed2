@@ -5,13 +5,13 @@ extend schema
 
 "Item or Product"
 type Item @key(fields: "UPC") {
-  "Item Number with proper description for team"
+  "Item Number with proper description"
   ItemNbr:  ID
   "Item Description"
   ItemDesc1: String
   "Prime Item Number"
   PrimeItemNbr: String
-  "Prime Item Description for team"
+  "Prime Item Description"
   PrimeItemDesc: String
   "UPC Code"
   UPC: ID!

@@ -27,7 +27,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Rover
         run: |
-          curl -sSL https://rover.apollo.dev/nix/v0.1.0 | sh
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
       # Runs a set of commands using the runners shell
