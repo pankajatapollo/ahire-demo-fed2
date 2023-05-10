@@ -1,17 +1,19 @@
-require("./open-telemetry.js");
-const fs = require('fs');
-const dotenv = require('dotenv');
-dotenv.config();
-const { ApolloServer, gql } = require('apollo-server');
-const { buildSubgraphSchema } = require('@apollo/subgraph');
+import "./open-telemetry.js";
+import fs from 'fs';
+import dotenv from 'dotenv';
+import { SaleAPI } from './datasources/sale.js';
+import { resolvers } from './resolvers.js';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { buildSubgraphSchema } from '@apollo/subgraph';
+import { gql } from 'graphql-tag';
+import { myplugin } from './customplugin.js';
+import log4js from 'log4js';
 
-const log4js = require('log4js');
+
+dotenv.config();
 const log4jslogger = log4js.getLogger("SALE");
 log4jslogger.level = "debug";
-
-const SaleAPI = require('./datasources/sale');
-const resolvers = require('./resolvers');
-const myplugin = require('./customplugin');
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -26,17 +28,27 @@ const server = new ApolloServer({
     saleAPI: new SaleAPI()
   }),
   logger: log4jslogger,
-  plugins: [ myplugin ],
-  context: ({ req }) => ({
-    defaultlimit: req.headers.defaultlimit || 20,
-    req: req,
-    logger: log4jslogger
-  })
+  plugins: [ myplugin ]
 });
 
 const PORT = process.env.PORT || 8085;
 
-// The `listen` method launches a web server.
-server.listen({port:PORT}).then(({ url }) => {
-  console.log(`🚀 SALE Subgraph Server ready at ${url}`);
+class ContextValue {
+  constructor({ req, server }) {
+    this.defaultlimit = req.headers.defaultlimit || 20;
+    this.req = req;
+    const { cache } = server;
+    this.logger = log4jslogger;
+    this.dataSources = {
+      saleAPI: new SaleAPI( { cache, contextValue: this }),
+    };
+  }
+}
+
+const { url } = await startStandaloneServer(server, {
+  context: async ({ req }) => new ContextValue({ req, server }),
+  listen: { port: PORT }
 });
+
+console.log(`🚀 SALE Subgraph Server ready at ${url}`);
+

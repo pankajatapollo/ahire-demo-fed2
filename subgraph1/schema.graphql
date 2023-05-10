@@ -1,10 +1,10 @@
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0",
+  @link(url: "https://specs.apollo.dev/federation/v2.3",
         import: ["@key", "@shareable", "@tag"])
 
 "Sales information from Point of Sales system (Fed 2 subgraph)"
 type Sale @key(fields: "UPC StoreNbr Daily") {
-    "UPC Number of the item sold in a store --- for ThermoFisher team"
+    "UPC Number of the item sold in a store"
     UPC: ID!
     "UPC Description of the item"
     UPCDesc: String

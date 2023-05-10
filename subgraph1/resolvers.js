@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken');
+import pkg from 'jsonwebtoken';
+const { jwt } = pkg;
 
-module.exports = {
+export const resolvers = {
     Query: {
       sales: (function(_, { upc, store, daily }, { logger, dataSources }) { 
           if (upc === undefined && store === undefined && daily === undefined) {

@@ -1,9 +1,10 @@
-const log4js = require('log4js');
+import log4js from 'log4js';
+//const { log4js } = pkg;
 const log4jslogger = log4js.getLogger("CUSTOMPLUGIN");
 log4jslogger.level = "debug";
 const logger = log4jslogger;
 
-module.exports = {
+export const myplugin =  {
     // Fires whenever a GraphQL request is received from a client.
     async requestDidStart(requestContext) {
       logger.log('Request started! Query:\n' +

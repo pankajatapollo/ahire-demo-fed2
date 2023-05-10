@@ -1,14 +1,19 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+import { RESTDataSource } from '@apollo/datasource-rest';
 
-class SaleAPI extends RESTDataSource {
-    willSendRequest(request) {
-        request.headers.set('Defaultlimit', this.context.defaultlimit)
+export class SaleAPI extends RESTDataSource {
+  
+
+  constructor({ cache, contextValue }) {
+    super();
+    this.baseURL = 'http://localhost:8080/';
+    this.context = contextValue;
+    this.cache = cache;
+  }
+  
+  willSendRequest(_path, request) {
+        request.headers['Defaultlimit'] = this.context.defaultlimit;
     }
     
-    constructor() {
-      super();
-      this.baseURL = 'http://localhost:8080/';
-    }
   
     async getAllSales() {
       const response = await this.get('pos');
@@ -31,5 +36,3 @@ class SaleAPI extends RESTDataSource {
       }
     
   }
-
-module.exports = SaleAPI

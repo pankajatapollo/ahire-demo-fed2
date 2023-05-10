@@ -1,8 +1,9 @@
 {
     "name": "subgraph-sales",
-    "version": "1.0.0-FED2",
+    "version": "1.1.0-FED2",
     "description": "",
     "main": "server.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js"
@@ -22,11 +23,12 @@
         "@opentelemetry/resources": "*",
         "@opentelemetry/sdk-trace-base": "*",
         "@opentelemetry/sdk-trace-node": "*",
-        "apollo-datasource-rest": "*",
-        "apollo-server": "*",
+        "@apollo/datasource-rest": "*",
+        "@apollo/server": "*",
         "dotenv": "*",
         "graphql": "*",
         "jsonwebtoken": "^8.5.1",
-        "log4js": "*"
+        "log4js": "*",
+	"graphql-tag": "*"
     }
 }
